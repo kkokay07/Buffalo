@@ -99,6 +99,9 @@ use the .prune.in file to retain only independent SNPs
 ```bash
 plink --bfile buffalo_maf_filtered --extract buffalo_ld.prune.in --make-bed --out buffalo_ld_filtered
 ```
-
+Remove "N" (missing or ambiguous nucleotides)
+```bash
+plink --bfile buffalo_ld_filtered --exclude <(awk '$5=="N" || $6=="N" {print $2}' buffalo_ld_filtered.bim) --make-bed --out buffalo_ld_noN
+```
 
 
